@@ -27,7 +27,7 @@ int main() {
     int paddle_x = 2;       // horizontal position (left side)
     int paddle_h = 4;       // height in rows
 
-    int ai_y = 10;
+    int ai_y = LINES / 2;
     int ai_x = COLS - 2;
     int ai_h = 4;
 
