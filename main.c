@@ -27,7 +27,7 @@ int main() {
     int paddle_x = 2;       // horizontal position (left side)
     int paddle_h = 4;       // height in rows
 
-    int ai_y = 0;
+    int ai_y = 10;
     int ai_x = COLS - 2;
     int ai_h = 4;
 
@@ -51,7 +51,7 @@ int main() {
 	mvprintw(ball_y, ball_x, "O");
 
 	// draw score
-	mvprintw(LINES-1, 0, "%d:%d", your_score, ai_score);
+	mvprintw(LINES-1, 2, "Score - %d:%d", your_score, ai_score);
 
 	// move ball
 	clock_gettime(CLOCK_MONOTONIC, &now);
