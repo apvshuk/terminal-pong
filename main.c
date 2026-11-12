@@ -42,30 +42,30 @@ int main() {
         if (ch == 's' && paddle_y + paddle_h < LINES) paddle_y++;
         if (ch == 'q') break;
 
-	if (paddle_y + paddle_h >= LINES) paddle_y = LINES - paddle_h;
-	if (ai_y + ai_h >= LINES) ai_y = LINES - ai_h;
+		if (paddle_y + paddle_h >= LINES) paddle_y = LINES - paddle_h;
+		if (ai_y + ai_h >= LINES) ai_y = LINES - ai_h;
 
         clear();            // wipes the entire screen
 
-	// draw ball
-	mvprintw(ball_y, ball_x, "O");
+		// draw ball
+		mvprintw(ball_y, ball_x, "O");
 
-	// draw score
-	mvprintw(LINES-1, 2, "Score - %d:%d", your_score, ai_score);
+		// draw score
+		mvprintw(LINES-1, 2, "Score - %d:%d", your_score, ai_score);
 
-	// move ball
-	clock_gettime(CLOCK_MONOTONIC, &now);
-	double elapsed = (now.tv_sec - last.tv_sec) * 1000.0 + (now.tv_nsec - last.tv_nsec) / 1e6;
+		// move ball
+		clock_gettime(CLOCK_MONOTONIC, &now);
+		double elapsed = (now.tv_sec - last.tv_sec) * 1000.0 + (now.tv_nsec - last.tv_nsec) / 1e6;
 
-	// change ball position every {ball_delay} time; this time decreases every time
-	// ball hits the top or bottom - see move_ball function
-	if (elapsed >= ball_delay) {
-		move_ball(&ball_y, &ball_x, &paddle_y, &paddle_h, &paddle_x, &ai_y, &ai_x, &ai_h);
+		// change ball position every {ball_delay} time; this time decreases every time
+		// ball hits the top or bottom - see move_ball function
+		if (elapsed >= ball_delay) {
+			move_ball(&ball_y, &ball_x, &paddle_y, &paddle_h, &paddle_x, &ai_y, &ai_x, &ai_h);
 
-		move_ai(&ball_y, &ball_x, &ai_y, &ai_x, &ai_h);
+			move_ai(&ball_y, &ball_x, &ai_y, &ai_x, &ai_h);
 
-		last = now;
-	}	
+			last = now;
+		}	
 
         // draw paddle
         for (int i = 0; i < paddle_h; i++) {
@@ -74,10 +74,10 @@ int main() {
 						   // mv = move
 						   // printw = printf for ncurses
         }
-	for (int i = 0; i < ai_h; i++) mvprintw(ai_y + i, ai_x, "|");
+		for (int i = 0; i < ai_h; i++) mvprintw(ai_y + i, ai_x, "|");
 
         refresh();          // actually pushes everything to the terminal
-			    // ncurses batches draws, nothing shows until you call this
+						    // ncurses batches draws, nothing shows until you call this
     }
 
     endwin();               // exits alternate screen, restores terminal to original state
